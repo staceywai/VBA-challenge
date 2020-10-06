@@ -67,7 +67,10 @@ Sub StockAnalyzer():
                     
                     'Make Calculations
                     YearlyChange = ClosePrice - OpenPrice
-                    PercentChange = YearlyChange / OpenPrice
+                    If OpenPrice = 0 Then
+                        PercentChange = 1
+                    Else: PercentChange = YearlyChange / OpenPrice
+                    End If
             
                     'Print values in summary table
                     ws.Cells(NextRow, 9).Value = OldCell
